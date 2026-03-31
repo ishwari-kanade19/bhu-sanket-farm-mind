@@ -39,9 +39,8 @@ const IoTDashboard = () => {
         ))}
       </div>
 
-      {/* Device Status */}
       <motion.div {...card(5)} className="glass-card rounded-xl p-5">
-        <h3 className="font-semibold text-sm mb-3">Device Status</h3>
+        <h3 className="font-semibold text-sm mb-3">{t("deviceStatus")}</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {devices.map((d) => (
             <div key={d.id} className="flex items-center gap-3 bg-secondary/50 rounded-lg p-3">
@@ -59,10 +58,9 @@ const IoTDashboard = () => {
         </div>
       </motion.div>
 
-      {/* Charts */}
       <motion.div {...card(6)} className="glass-card rounded-xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-semibold text-sm">Sensor History</h3>
+          <h3 className="font-semibold text-sm">{t("sensorHistory")}</h3>
           <div className="flex gap-1 bg-secondary rounded-lg p-0.5">
             <button onClick={() => setPeriod("24h")} className={`px-3 py-1 rounded-md text-xs font-medium transition ${period === "24h" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}>{t("last24h")}</button>
             <button onClick={() => setPeriod("7d")} className={`px-3 py-1 rounded-md text-xs font-medium transition ${period === "7d" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}>{t("last7d")}</button>
@@ -75,9 +73,9 @@ const IoTDashboard = () => {
               <XAxis dataKey="time" tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
               <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
               <Tooltip contentStyle={{ borderRadius: 12, border: "1px solid hsl(var(--border))", background: "hsl(var(--card))" }} />
-              <Line type="monotone" dataKey="moisture" stroke="#3b82f6" strokeWidth={2} dot={false} name="Moisture %" />
-              <Line type="monotone" dataKey="temperature" stroke="#f97316" strokeWidth={2} dot={false} name="Temp °C" />
-              <Line type="monotone" dataKey="humidity" stroke="#22c55e" strokeWidth={2} dot={false} name="Humidity %" />
+              <Line type="monotone" dataKey="moisture" stroke="#3b82f6" strokeWidth={2} dot={false} name={t("moisture")} />
+              <Line type="monotone" dataKey="temperature" stroke="#f97316" strokeWidth={2} dot={false} name={t("temperature")} />
+              <Line type="monotone" dataKey="humidity" stroke="#22c55e" strokeWidth={2} dot={false} name={t("humidity")} />
             </LineChart>
           </ResponsiveContainer>
         </div>
