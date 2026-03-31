@@ -20,6 +20,10 @@ export const generateTimeSeriesData = (hours: number) => {
 export const zones = [
   { id: "A", crop: "rice", emoji: "🌾", color: "green" as const, area: "2.5 acres", moisture: 72, health: 88, irrigating: false },
   { id: "B", crop: "wheat", emoji: "🌿", color: "yellow" as const, area: "3.0 acres", moisture: 45, health: 65, irrigating: false },
+  { id: "C", crop: "cotton", emoji: "🌼", color: "green" as const, area: "2.0 acres", moisture: 58, health: 78, irrigating: false },
+  { id: "D", crop: "sugarcane", emoji: "🎋", color: "green" as const, area: "3.5 acres", moisture: 80, health: 92, irrigating: false },
+  { id: "E", crop: "soybean", emoji: "🫘", color: "yellow" as const, area: "1.8 acres", moisture: 38, health: 52, irrigating: false },
+  { id: "F", crop: "corn", emoji: "🌽", color: "green" as const, area: "2.2 acres", moisture: 65, health: 85, irrigating: false },
 ];
 
 export const weatherForecast = [
@@ -76,3 +80,33 @@ export const govSchemes = [
   { name: "Soil Health Card", description: "Free soil testing", eligibility: "All farmers" },
   { name: "Kisan Credit Card", description: "Low interest farm loans", eligibility: "Land-owning farmers" },
 ];
+
+export const farmingTasks = [
+  { id: 1, type: "sowing", crop: "Rice", date: "2026-06-15", status: "completed" as const },
+  { id: 2, type: "fertilizer", crop: "Rice", date: "2026-07-20", status: "completed" as const },
+  { id: 3, type: "irrigation", crop: "Rice", date: "2026-08-05", status: "completed" as const },
+  { id: 4, type: "fertilizer", crop: "Rice", date: "2026-08-25", status: "pending" as const },
+  { id: 5, type: "harvest", crop: "Rice", date: "2026-10-15", status: "pending" as const },
+  { id: 6, type: "sowing", crop: "Wheat", date: "2026-11-10", status: "pending" as const },
+  { id: 7, type: "fertilizer", crop: "Wheat", date: "2026-12-15", status: "pending" as const },
+  { id: 8, type: "irrigation", crop: "Wheat", date: "2026-12-28", status: "pending" as const },
+  { id: 9, type: "harvest", crop: "Wheat", date: "2027-03-20", status: "pending" as const },
+  { id: 10, type: "sowing", crop: "Cotton", date: "2026-04-10", status: "completed" as const },
+  { id: 11, type: "irrigation", crop: "Cotton", date: "2026-05-20", status: "completed" as const },
+  { id: 12, type: "fertilizer", crop: "Cotton", date: "2026-06-01", status: "completed" as const },
+];
+
+export const financeData = {
+  totalCost: 185000,
+  revenue: 342000,
+  profit: 157000,
+  expenses: [
+    { category: "Seeds", amount: 25000 },
+    { category: "Fertilizer", amount: 42000 },
+    { category: "Pesticides", amount: 18000 },
+    { category: "Labour", amount: 55000 },
+    { category: "Irrigation", amount: 22000 },
+    { category: "Equipment", amount: 15000 },
+    { category: "Transport", amount: 8000 },
+  ],
+};
