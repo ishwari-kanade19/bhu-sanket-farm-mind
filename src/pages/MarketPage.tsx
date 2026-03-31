@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { marketData } from "@/data/mockData";
-import { TrendingUp, TrendingDown, Minus, Calculator } from "lucide-react";
+import { TrendingUp, TrendingDown, Minus, ShoppingCart } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 const card = (i: number) => ({ initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { delay: i * 0.08 } });
@@ -15,9 +15,7 @@ const priceHistory = Array.from({ length: 12 }, (_, i) => ({
 
 const MarketPage = () => {
   const { t } = useLanguage();
-  const [area, setArea] = useState("2.5");
   const [crop, setCrop] = useState("Rice");
-  const selected = marketData.find((m) => m.crop === crop) || marketData[0];
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
@@ -33,14 +31,14 @@ const MarketPage = () => {
               {m.trend === "up" ? <TrendingUp size={14} className="text-farm-green" /> : m.trend === "down" ? <TrendingDown size={14} className="text-farm-red" /> : <Minus size={14} className="text-muted-foreground" />}
               <span className={`text-xs font-medium ${m.trend === "up" ? "text-farm-green" : m.trend === "down" ? "text-farm-red" : "text-muted-foreground"}`}>{m.trend}</span>
             </div>
-            <p className="text-xs text-muted-foreground mt-2">Best: {m.bestTime}</p>
+            <p className="text-xs text-muted-foreground mt-2">{t("bestSellTime")}: {m.bestTime}</p>
           </motion.div>
         ))}
       </div>
 
       {/* Price Chart */}
       <motion.div {...card(5)} className="glass-card rounded-xl p-5">
-        <h3 className="font-semibold text-sm mb-4">Price Trends (₹/quintal)</h3>
+        <h3 className="font-semibold text-sm mb-4">{t("priceTrends")} (₹/quintal)</h3>
         <div className="h-56">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={priceHistory}>
@@ -55,24 +53,24 @@ const MarketPage = () => {
         </div>
       </motion.div>
 
-      {/* Profit Calculator */}
+      {/* Selling Suggestion */}
       <motion.div {...card(6)} className="glass-card rounded-xl p-5">
-        <h3 className="font-semibold text-sm mb-4 flex items-center gap-2"><Calculator size={16} className="text-primary" /> {t("profitCalc")}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <label className="text-xs text-muted-foreground">Crop</label>
-            <select value={crop} onChange={(e) => setCrop(e.target.value)} className="w-full mt-1 rounded-lg border border-input bg-background px-3 py-2 text-sm">
-              {marketData.map((m) => <option key={m.crop}>{m.crop}</option>)}
-            </select>
-          </div>
-          <div>
-            <label className="text-xs text-muted-foreground">{t("area")} (acres)</label>
-            <input type="number" value={area} onChange={(e) => setArea(e.target.value)} className="w-full mt-1 rounded-lg border border-input bg-background px-3 py-2 text-sm" />
-          </div>
-          <div className="flex flex-col justify-end">
-            <p className="text-xs text-muted-foreground">Estimated Revenue</p>
-            <p className="text-2xl font-bold text-farm-green">₹{(selected.price * parseFloat(area || "0") * 8).toLocaleString()}</p>
-          </div>
+        <h3 className="font-semibold text-sm mb-4 flex items-center gap-2"><ShoppingCart size={16} className="text-primary" /> {t("sellingSuggestion")}</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {marketData.filter(m => m.trend === "up").map((m) => (
+            <div key={m.crop} className="border-l-4 border-farm-green bg-farm-green/5 rounded-r-lg p-4">
+              <p className="font-bold">{m.crop}</p>
+              <p className="text-sm text-muted-foreground">📈 {t("priceTrends")}: {m.trend}</p>
+              <p className="text-sm font-semibold text-farm-green mt-1">✅ Sell in {m.bestTime} for best price</p>
+            </div>
+          ))}
+          {marketData.filter(m => m.trend === "down").map((m) => (
+            <div key={m.crop} className="border-l-4 border-farm-red bg-farm-red/5 rounded-r-lg p-4">
+              <p className="font-bold">{m.crop}</p>
+              <p className="text-sm text-muted-foreground">📉 {t("priceTrends")}: {m.trend}</p>
+              <p className="text-sm font-semibold text-farm-red mt-1">⏳ Hold — prices may recover</p>
+            </div>
+          ))}
         </div>
       </motion.div>
     </div>
