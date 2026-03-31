@@ -53,7 +53,7 @@ const FinancePage = () => {
           <div className="h-56">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={financeData.expenses} dataKey="amount" nameKey="category" cx="50%" cy="50%" outerRadius={85} label={({ category, percent }) => `${category} ${(percent * 100).toFixed(0)}%`} labelLine={false}>
+                <Pie data={financeData.expenses} dataKey="amount" nameKey="category" cx="50%" cy="50%" outerRadius={85} label={({ name, percent }) => `${name} ${((percent || 0) as number * 100).toFixed(0)}%`} labelLine={false}>
                   {financeData.expenses.map((_, i) => (
                     <Cell key={i} fill={COLORS[i % COLORS.length]} />
                   ))}

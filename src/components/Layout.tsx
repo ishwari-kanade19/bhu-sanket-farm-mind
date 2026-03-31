@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage, Language } from "@/contexts/LanguageContext";
 import {
   LayoutDashboard, Cpu, Sliders, Play, Brain, Map, Sprout,
-  Bug, Cloud, TrendingUp, Layers, Bell, Menu, X, Globe, Mic, Volume2
+  Bug, Cloud, TrendingUp, Layers, Bell, Menu, X, Globe, Mic, IndianRupee, Shield
 } from "lucide-react";
 
 const navItems = [
@@ -18,8 +18,10 @@ const navItems = [
   { path: "/disease", icon: Bug, labelKey: "diseaseDetection" },
   { path: "/weather", icon: Cloud, labelKey: "weather" },
   { path: "/market", icon: TrendingUp, labelKey: "market" },
+  { path: "/finance", icon: IndianRupee, labelKey: "finance" },
   { path: "/soil", icon: Layers, labelKey: "soilHealth" },
   { path: "/alerts", icon: Bell, labelKey: "alerts" },
+  { path: "/compensation", icon: Shield, labelKey: "govCompensation" },
 ];
 
 const langLabels: Record<Language, string> = { en: "EN", hi: "हिं", mr: "मरा" };
@@ -74,7 +76,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               className="fixed inset-0 bg-foreground/50 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
             <motion.aside initial={{ x: -280 }} animate={{ x: 0 }} exit={{ x: -280 }}
               transition={{ type: "spring", damping: 25 }}
-              className="fixed left-0 top-0 bottom-0 w-64 bg-sidebar text-sidebar-foreground z-50 lg:hidden">
+              className="fixed left-0 top-0 bottom-0 w-64 bg-sidebar text-sidebar-foreground z-50 lg:hidden overflow-y-auto">
               <div className="p-5 flex items-center justify-between border-b border-sidebar-border">
                 <h1 className="text-lg font-bold text-sidebar-primary">🌱 {t("appName")}</h1>
                 <button onClick={() => setSidebarOpen(false)}><X size={20} /></button>
