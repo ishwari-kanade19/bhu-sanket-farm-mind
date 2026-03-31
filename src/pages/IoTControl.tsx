@@ -14,7 +14,7 @@ const IoTControl = () => {
   const controls = [
     { label: pump ? t("pumpOn") : t("pumpOff"), active: pump, toggle: () => setPump(!pump), icon: Power, desc: "Water pump motor control", color: "farm-blue" },
     { label: autoIrrigation ? t("irrigationAuto") : t("irrigationManual"), active: autoIrrigation, toggle: () => setAutoIrrigation(!autoIrrigation), icon: Settings, desc: "Irrigation mode selector", color: "farm-green" },
-    { label: sprayer ? t("sprayerOn") : t("sprayerOff"), active: sprayer, toggle: () => setSprayer(!sprayer), icon: Spray, desc: "Pesticide sprayer control", color: "farm-orange" },
+    { label: sprayer ? t("sprayerOn") : t("sprayerOff"), active: sprayer, toggle: () => setSprayer(!sprayer), icon: SprayCan, desc: "Pesticide sprayer control", color: "farm-orange" },
   ];
 
   return (
