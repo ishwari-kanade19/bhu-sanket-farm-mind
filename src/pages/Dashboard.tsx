@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { alertsData, sensorData, weatherForecast } from "@/data/mockData";
 import { Droplets, Thermometer, Wind, Sun, Shield, AlertTriangle, CheckCircle } from "lucide-react";
-import farmHero from "@/assets/farm-hero.jpg";
+import farmHeroVideo from "@/assets/farm-hero-video.mp4.asset.json";
 
 const card = (i: number) => ({ initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { delay: i * 0.08, duration: 0.4 } });
 
@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Hero */}
       <motion.div {...card(0)} className="relative rounded-2xl overflow-hidden h-52 md:h-64">
-        <img src={farmHero} alt="Farm" className="w-full h-full object-cover" width={1920} height={800} />
+        <video src={farmHeroVideo.url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
         <div className="absolute inset-0 gradient-hero flex items-end p-6 md:p-8">
           <div>
             <h1 className="text-2xl md:text-4xl font-extrabold text-primary-foreground">🌱 {t("appName")}</h1>
