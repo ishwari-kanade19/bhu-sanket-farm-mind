@@ -14,7 +14,7 @@ const Dashboard = () => {
     <div className="space-y-6 max-w-7xl mx-auto">
       {/* Hero */}
       <motion.div {...card(0)} className="relative rounded-2xl overflow-hidden h-52 md:h-64">
-        <img src={farmHero} alt="Farm" className="w-full h-full object-cover" width={1920} height={800} />
+        <video src={farmHeroVideo.url} autoPlay loop muted playsInline className="w-full h-full object-cover" />
         <div className="absolute inset-0 gradient-hero flex items-end p-6 md:p-8">
           <div>
             <h1 className="text-2xl md:text-4xl font-extrabold text-primary-foreground">🌱 {t("appName")}</h1>
