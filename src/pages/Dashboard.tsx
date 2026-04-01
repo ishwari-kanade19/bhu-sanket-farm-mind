@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { alertsData, sensorData, weatherForecast } from "@/data/mockData";
 import { Droplets, Thermometer, Wind, Sun, Shield, AlertTriangle, CheckCircle } from "lucide-react";
-import farmHero from "@/assets/farm-hero.jpg";
+import farmHeroVideo from "@/assets/farm-hero-video.mp4.asset.json";
 
 const card = (i: number) => ({ initial: { opacity: 0, y: 20 }, animate: { opacity: 1, y: 0 }, transition: { delay: i * 0.08, duration: 0.4 } });
 
